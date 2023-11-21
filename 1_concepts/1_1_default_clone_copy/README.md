@@ -77,9 +77,20 @@ For better understanding the topic, read through:
 
 After completing everything above, you should be able to answer (and understand why) the following questions:
 - What purpose does [`Default`] trait serve in [Rust]?
-- What is `#[derive(Default)]` from `std` capable of? What does it wrong? Which are alternatives?
+    - A trait for a giving a type a useful default value. May be used for easily create struct instanse like
+    ```rust
+    let foo = Foo { field: value, ..Default::default() }
+    ```
+- What is `#[derive(Default)]` from [std] capable of? What does it wrong? Which are alternatives?
+    - `#[derive(Default)]` from [std] capable to give default value for various primitive types and for fields implemented [`Default`] trait.
+    - With [`Default`] trait from [std] you can choose default value only for enums, other types has predefined value
+    - There is `#[derive(SmartDefault)]` from [smart-default]
 - What does [`Clone`] mean semantically?
+    - A common trait for the ability to explicitly duplicate an object.
 - What does [`Copy`] mean semantically? How is it connected with [`Clone`]? Which limitations does it have and why?
+    - Types whose values can be duplicated simply by copying bits. With [`Copy`] variable bindings will have [`Copy`] instead of `Move` semantic.
+    - Type must implements [`Clone`] before [`Copy`]
+    - Any type implements [`Drop`] cannot be [`Copy`]
 
 
 
