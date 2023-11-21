@@ -9,7 +9,7 @@ use std::fmt;
 use self::format::{Format, FormatWith};
 
 /// Extension trait for an [`Iterator`].
-pub trait MyIteratorExt: Iterator {
+pub trait MyIteratorExt: private::Sealed {
     /// Format all iterator elements, separated by `sep`.
     ///
     /// All elements are formatted (any formatting trait)
@@ -192,4 +192,9 @@ mod format {
     impl_format! {
         Display Debug UpperExp LowerExp UpperHex LowerHex Octal Binary Pointer
     }
+}
+
+mod private {
+    pub trait Sealed: Iterator {}
+    impl<T: Iterator> Sealed for T {}
 }
