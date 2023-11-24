@@ -3,3 +3,11 @@ name = "step_3_9"
 version = "0.1.0"
 edition = "2021"
 publish = false
+
+[dependencies]
+clap = { version = "4.4.8", features = ["derive"] }
+config = "0.13.4"
+serde = { version = "1.0.193", features = ["derive"] }
+serde-inline-default = "0.1.1"
+smart-default = "0.7.1"
+structopt = "0.3.26"

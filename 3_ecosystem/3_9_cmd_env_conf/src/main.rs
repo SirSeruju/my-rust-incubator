@@ -1,3 +1,9 @@
+mod cli;
+mod settings;
+
+use settings::Settings;
+
 fn main() {
-    println!("Implement me!");
+    let s = Settings::new().expect("failed to get settings with error:");
+    println!("Your settings:\n{:?}", s);
 }
