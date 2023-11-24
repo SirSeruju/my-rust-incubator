@@ -19,6 +19,7 @@ struct Args {
     file: PathBuf,
 }
 
+/// Returns BufReader for lines from file `filename`
 async fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where
     P: AsRef<Path>,
@@ -27,6 +28,9 @@ where
     Ok(BufReader::new(file).lines())
 }
 
+/// Construct filename with giving url
+/// Uses path if presented, otherwise uses host
+/// if filename not ends with .html, adds it
 fn filename_from_url(url: &reqwest::Url) -> String {
     let filename = match url
         .path_segments()
@@ -47,11 +51,13 @@ fn filename_from_url(url: &reqwest::Url) -> String {
     }
 }
 
+/// Represents error from `download_html`
 enum DownloadError {
     RequestError(reqwest::Error),
     FileError(std::io::Error),
 }
 
+/// Download html page and saves it to path constructed with `filename_from_url`
 async fn download_html(link: String) -> Result<(), DownloadError> {
     let response = reqwest::get(link.clone())
         .await
