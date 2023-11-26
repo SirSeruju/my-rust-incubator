@@ -143,6 +143,24 @@ After completing everything above, you should be able to answer (and understand 
 - What are migrations? Why should we use them? How do they work? 
 - Which kinds of migrations do exist? What are their advantages and disadvantages? When and which kind is preferred?  
 
+## How to run
+```bash
+# Up container with postgres
+docker-compose up -d
+# Optional install diesel_cli with postgres feature for further migrations
+cargo install diesel_cli --no-default-features --features postgres
+# Migrate your db
+diesel migration run
+
+# Optional export DATABASE_URL for not to specify it every time in CLI
+export $(grep -v '^#' .env | xargs)
+
+# Run CLI
+cargo run -- -h
+
+# Then do whatever you want to :D
+```
+
 
 
 
