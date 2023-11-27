@@ -1,6 +1,7 @@
 use diesel::prelude::*;
+use serde::Serialize;
 
-#[derive(Debug, Queryable, Selectable)]
+#[derive(Debug, Queryable, Selectable, Serialize)]
 #[diesel(table_name = crate::schema::users)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct User {
@@ -9,7 +10,7 @@ pub struct User {
     pub bio: String,
 }
 
-#[derive(Debug, Insertable, Queryable, Selectable)]
+#[derive(Debug, Insertable, Queryable, Selectable, Serialize)]
 #[diesel(table_name = crate::schema::roles)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Role {

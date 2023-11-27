@@ -25,19 +25,19 @@ pub enum Command {
 #[derive(Debug, StructOpt)]
 pub enum UserCommand {
     Create {
-        #[structopt()]
+        #[structopt(long, short)]
         name: String,
-        #[structopt()]
+        #[structopt(long, short)]
         role_slug: String,
-        #[structopt()]
+        #[structopt(long, short)]
         bio: String,
     },
     Delete {
-        #[structopt()]
+        #[structopt(long, short)]
         user_id: i32,
     },
     Update {
-        #[structopt()]
+        #[structopt(long, short)]
         user_id: i32,
         #[structopt(long, short)]
         name: Option<String>,
@@ -46,7 +46,7 @@ pub enum UserCommand {
     },
     List,
     Get {
-        #[structopt()]
+        #[structopt(long, short)]
         user_id: i32,
     },
 }
@@ -54,17 +54,17 @@ pub enum UserCommand {
 #[derive(Debug, StructOpt)]
 pub enum RoleCommand {
     Create {
-        #[structopt()]
+        #[structopt(long, short)]
         name: String,
-        #[structopt()]
+        #[structopt(long, short)]
         permissions: String,
     },
     Delete {
-        #[structopt()]
+        #[structopt(long, short)]
         role_slug: String,
     },
     Update {
-        #[structopt()]
+        #[structopt(long, short)]
         role_slug: String,
         #[structopt(long, short)]
         name: Option<String>,
@@ -72,20 +72,20 @@ pub enum RoleCommand {
         permissions: Option<String>,
     },
     Unassign {
-        #[structopt()]
+        #[structopt(long, short)]
         role_slug: String,
-        #[structopt()]
+        #[structopt(long, short)]
         user_id: i32,
     },
     Assign {
-        #[structopt()]
+        #[structopt(long, short)]
         role_slug: String,
-        #[structopt()]
+        #[structopt(long, short)]
         user_id: i32,
     },
     List,
     Get {
-        #[structopt()]
+        #[structopt(long, short)]
         role_slug: String,
     },
 }

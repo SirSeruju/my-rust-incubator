@@ -5,11 +5,13 @@ use tokio::runtime::Runtime;
 use step_4_1::cli::{Cli, Command, RoleCommand, StructOpt, UserCommand};
 use step_4_1::crud;
 
+use serde::Serialize;
+use serde_yaml;
 use std::fmt;
 
-fn print_result<O: fmt::Debug, E: fmt::Display>(r: Result<O, E>) {
+fn print_result<O: Serialize, E: fmt::Display>(r: Result<O, E>) {
     match r {
-        Ok(o) => println!("Result: {:?}", o),
+        Ok(o) => println!("Result:\n{}", serde_yaml::to_string(&o).unwrap()),
         Err(e) => println!("Error: {}", e),
     }
 }
