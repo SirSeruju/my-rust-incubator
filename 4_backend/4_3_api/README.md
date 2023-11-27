@@ -149,6 +149,9 @@ diesel migration run
 # Run server daemon
 env $(grep -v '^#' .env | xargs) cargo run --bin server
 # Now you can check http://localhost:8080/swagger-ui/ in your browser
+
+# You also can use client
+SERVER_URL=http://localhost:8080 cargo r --bin client --
 ```
 
 
