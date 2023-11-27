@@ -8,9 +8,9 @@ use crate::crud::DbPool;
 
 #[derive(Debug, Serialize, Deserialize, ToSchema)]
 pub struct NewUser {
-    name: String,
-    bio: String,
-    role_slug: String,
+    pub name: String,
+    pub bio: String,
+    pub role_slug: String,
 }
 
 /// Allows to create user
@@ -93,8 +93,8 @@ async fn read(
 
 #[derive(Debug, Serialize, Deserialize, ToSchema)]
 pub struct UpdateUser {
-    new_name: Option<String>,
-    new_bio: Option<String>,
+    pub new_name: Option<String>,
+    pub new_bio: Option<String>,
 }
 
 /// Allows to update user fields

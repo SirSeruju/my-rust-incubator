@@ -8,8 +8,8 @@ use crate::crud::DbPool;
 
 #[derive(Debug, Serialize, Deserialize, ToSchema)]
 pub struct NewRole {
-    name: String,
-    permissions: String,
+    pub name: String,
+    pub permissions: String,
 }
 
 /// Allows to create role
@@ -88,8 +88,8 @@ async fn read(
 
 #[derive(Debug, Serialize, Deserialize, ToSchema)]
 pub struct UpdateRole {
-    new_name: Option<String>,
-    new_permissions: Option<String>,
+    pub new_name: Option<String>,
+    pub new_permissions: Option<String>,
 }
 
 /// Allows to update role fields

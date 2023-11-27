@@ -1,11 +1,11 @@
 pub use structopt::StructOpt;
 
 #[derive(Debug, StructOpt)]
-#[structopt(name = "step_4_2", about = "Simple Cli allows CRUD data.")]
+#[structopt(name = "step_4_3", about = "Simple thick client Cli allows CRUD data.")]
 pub struct Cli {
     /// URL for postgres connection
-    #[structopt(long, short, env = "DATABASE_URL")]
-    pub database_url: String,
+    #[structopt(long, short, env = "SERVER_URL")]
+    pub server_url: String,
     #[structopt(subcommand)]
     pub cmd: Command,
 }
