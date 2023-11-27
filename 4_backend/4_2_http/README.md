@@ -110,6 +110,25 @@ After completing everything above, you should be able to answer (and understand 
 - What is WebSocket? How is it used and when? How does it work, in a nutshell?
 
 
+## How to run
+```bash
+# Up container with postgres
+docker-compose up -d
+# Optional install diesel_cli with postgres feature for further migrations
+cargo install diesel_cli --no-default-features --features postgres
+# Migrate your db
+diesel migration run
+
+# Optional edit .env file
+# Run server daemon
+env $(grep -v '^#' .env | xargs) cargo run --bin server
+
+# In another terminal
+SERVER_URL=http://localhost:8080/command cargo run --bin client -- -h
+
+# Then do whatever you want to :D
+```
+
 
 
 [`actix`]: https://docs.rs/actix
