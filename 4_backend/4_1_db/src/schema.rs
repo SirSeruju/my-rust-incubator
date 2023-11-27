@@ -30,4 +30,8 @@ diesel::table! {
 diesel::joinable!(users_roles -> roles (role_slug));
 diesel::joinable!(users_roles -> users (user_id));
 
-diesel::allow_tables_to_appear_in_same_query!(roles, users, users_roles,);
+diesel::allow_tables_to_appear_in_same_query!(
+    roles,
+    users,
+    users_roles,
+);

@@ -14,8 +14,8 @@ CREATE TABLE users (
 );
 
 CREATE TABLE users_roles (
-  role_slug VARCHAR NOT NULL REFERENCES public.roles(slug),
-  user_id INTEGER NOT NULL REFERENCES public.users(id),
+  role_slug VARCHAR NOT NULL REFERENCES public.roles(slug) ON DELETE CASCADE,
+  user_id INTEGER NOT NULL REFERENCES public.users(id) ON DELETE CASCADE,
   PRIMARY KEY (role_slug, user_id)
 );
 
