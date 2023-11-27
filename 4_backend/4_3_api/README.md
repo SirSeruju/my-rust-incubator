@@ -136,6 +136,25 @@ After completing everything above, you should be able to answer (and understand 
 
 
 
+## How to run
+```bash
+# Up container with postgres
+docker-compose up -d
+# Optional install diesel_cli with postgres feature for further migrations
+cargo install diesel_cli --no-default-features --features postgres
+# Migrate your db
+diesel migration run
+
+# Optional edit .env file
+# Run server daemon
+env $(grep -v '^#' .env | xargs) cargo run --bin server
+# Now you can check http://localhost:8080/swagger-ui/ in your browser
+```
+
+
+
+
+
 [`async-graphql`]: https://docs.rs/async-graphql
 [`cynic`]: https://docs.rs/cynic
 [`graphql-client`]: https://github.com/graphql-rust/graphql-client
