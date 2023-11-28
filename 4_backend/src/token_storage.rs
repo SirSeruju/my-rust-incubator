@@ -2,12 +2,17 @@ use ring::rand as rrand;
 use std::collections::HashMap;
 use std::sync::Mutex;
 
+/// Allows store and get tokens
 pub trait TokenStorage<U, T> {
+    /// Get new token by user
     fn new_token(&self, user: U) -> T;
+    /// Returns user by token, if token exist
     fn validate(&self, token: &T) -> Option<U>;
 }
 
+/// Type for token
 type Token = String;
+/// Type for username
 type Username = String;
 
 pub struct Storage {
