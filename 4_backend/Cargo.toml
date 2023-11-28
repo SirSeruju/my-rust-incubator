@@ -3,3 +3,19 @@ name = "step_4"
 version = "0.1.0"
 edition = "2021"
 publish = false
+
+[dependencies]
+bb8-postgres = "0.8.1"
+diesel = { version = "2.1.4", features = ["postgres"] }
+diesel-async = { version = "0.4.1", features = ["postgres", "bb8"] }
+tokio = { version = "1.34.0", features = ["full"] }
+juniper = { version = "0.15.10", features = ["uuid"] }
+actix-cors = "0.6.4"
+actix-web = "4.4.0"
+actix-web-lab = "0.20.1"
+log = "0.4.20"
+env_logger = "0.10.1"
+argon2 = "0.5.2"
+ring = "0.17.5"
+bb8 = "0.8.1"
+# uuid = { version = "0.8", features = ["serde", "v4"] }

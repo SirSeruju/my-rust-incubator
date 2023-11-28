@@ -40,6 +40,13 @@ If you have enough time after implementing base requirements, consider to add th
 
 
 
+## Generate and open doc
+```bash
+cargo doc --no-deps --open
+```
+
+
+
 [API]: https://en.wikipedia.org/wiki/API
 [GraphQL]: https://graphql.org/learn
 [HTML]: https://en.wikipedia.org/wiki/HTML
