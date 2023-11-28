@@ -1,4 +1,3 @@
-/// Implements graphql queries, mutations and context
 mod context;
 mod models;
 mod mutation;
@@ -11,8 +10,10 @@ pub use self::query::*;
 
 use juniper::{EmptySubscription, RootNode};
 
+/// GraphQL schema type
 pub type Schema = RootNode<'static, QueryRoot, MutationRoot, EmptySubscription<Context>>;
 
+/// Allows to create [`Schema`]
 pub fn create_schema() -> Schema {
     Schema::new(QueryRoot {}, MutationRoot {}, EmptySubscription::new())
 }

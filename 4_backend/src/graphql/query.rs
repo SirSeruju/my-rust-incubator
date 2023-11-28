@@ -7,6 +7,7 @@ use super::models::User;
 
 use crate::token_storage::TokenStorage;
 
+/// Implements GraphQL queries
 pub struct QueryRoot;
 
 #[graphql_object(context = Context)]

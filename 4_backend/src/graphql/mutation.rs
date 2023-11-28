@@ -11,10 +11,12 @@ use super::models::{AuthUser, Friendship, User};
 
 use crate::token_storage::TokenStorage;
 
+/// /// Implements GraphQL mutations
 pub struct MutationRoot;
 
 #[graphql_object(context = Context)]
 impl MutationRoot {
+    /// Allows to register user
     pub async fn register(
         context: &Context,
         user_name: String,
@@ -54,6 +56,7 @@ impl MutationRoot {
                 )
             })
     }
+    /// Allows to authenticate user
     pub async fn authenticate(
         context: &Context,
         user_name: String,
@@ -88,6 +91,7 @@ impl MutationRoot {
         argon2.verify_password(&password.into_bytes(), &db_pass_hash)?;
         Ok(context.auth_tokens.new_token(user_name))
     }
+    /// Allows to add friend to authenticated user by user name
     pub async fn add_friend(
         context: &Context,
         auth_token: String,
@@ -151,6 +155,7 @@ impl MutationRoot {
             })?;
         Ok(current_user)
     }
+    /// Allows to remove friend from authenticated user by user name
     pub async fn remove_friend(
         context: &Context,
         auth_token: String,

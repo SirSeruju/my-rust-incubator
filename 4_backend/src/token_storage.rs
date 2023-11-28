@@ -15,11 +15,13 @@ type Token = String;
 /// Type for username
 type Username = String;
 
+/// Specific implementation for [`TokenStorage`]
 pub struct Storage {
     tokens: Mutex<HashMap<Token, Username>>,
 }
 
 impl Storage {
+    /// Returns empty [`Storage`]
     pub fn new() -> Self {
         Storage {
             tokens: Mutex::new(HashMap::new()),
